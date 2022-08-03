@@ -64,6 +64,8 @@ export class BleManager {
   constructor(options: BleManagerOptions = {}) {
     this._eventEmitter = new EventEmitter(BleModule)
     this._uniqueId = 0
+    if (!BleModule.addListener)BleModule.addListener=console.warn
+    if (!BleModule.removeListeners)BleModule.removeListeners=console.warn
     this._activePromises = {}
     this._activeSubscriptions = {}
 
